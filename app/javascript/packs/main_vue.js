@@ -5,14 +5,22 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from './app.vue'
+import Vue from 'vue/dist/vue.esm'
+import TurbolinksAdapter from 'vue-turbolinks'
+import VueResource from 'vue-resource'
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('hello'))
-  const app = new Vue(App).$mount('hello')
+Vue.use(VueResource)
+Vue.use(TurbolinksAdapter)
 
-  console.log(app)
+document.addEventListener('turbolinks:load', () => {
+  Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
+  var app = new Vue({
+      el: '#vue-app',
+      created: function() {
+        console.log('main vue created')
+      }
+  })
 })
 
 
