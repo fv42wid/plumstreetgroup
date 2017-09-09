@@ -1,6 +1,10 @@
 <template>
     <transition name="slide-fade" mode="out-in">
         <div v-if="!messageSent" key="form">
+            <div class="notification is-danger" v-for="(error, index) in serverErrors" :key="index">
+                <button class="delete" @click="dismissError(index)"></button>
+                {{ error }}
+            </div>
             <form @submit.prevent="sendMessage">
                 <div class="field">
                     <label class="label">Name</label>
@@ -91,6 +95,10 @@
                     this.serverErrors = JSON.parse(response.bodyText).errors
                 })
 
+            },
+            dismissError(index) {
+                this.serverErrors.splice(index, 1)
+                console.log(this.serverErrors)
             }
         },
         computed: {
