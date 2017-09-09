@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
+      @message.send_new_message
       render json: {message: @message}
     else
       render json: {errors: @message.errors.full_messages}, status: 422

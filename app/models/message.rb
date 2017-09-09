@@ -3,4 +3,8 @@ class Message < ApplicationRecord
   validates :email, presence: true
   validates :body, presence: true
 
+  def send_new_message
+    MessageMailer.new_message(self).deliver_now
+  end
+
 end
