@@ -22,10 +22,20 @@ $dark: #004ba0;
 
 @import "bulma";
 
-.margin-top {
-  margin-top: 20px;
+.slide-fade-enter-active {
+  transition: all .5s ease;
 }
 
-.margin-bottom {
-  margin-bottom: 40px;
+.slide-fade-leave-active {
+  transition: all 1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.slide-fade-enter {
+  transform: translateX(-10px);
+  opacity: 0;
 }
