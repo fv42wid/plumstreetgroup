@@ -21,6 +21,16 @@ document.addEventListener('turbolinks:load', () => {
 
   var app = new Vue({
       el: '#vue-app',
+      data: function() {
+          return {
+              mobileNav: false
+          }
+      },
+      methods: {
+          toggleNav() {
+              this.mobileNav = !this.mobileNav
+          }
+      },
       created: function() {
         console.log('main vue created')
       },

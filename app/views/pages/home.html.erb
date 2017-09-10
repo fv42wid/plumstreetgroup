@@ -5,12 +5,12 @@
         <div class="nav-left">
           <a class="nav-item" href="#">PlumSt</a>
         </div>
-        <span class="nav-toggle">
+        <span class="nav-toggle" @click="toggleNav" :class="{ 'is-active': mobileNav }">
           <span></span>
           <span></span>
           <span></span>
         </span>
-        <div class="nav-right nav-menu">
+        <div class="nav-right nav-menu" :class="{ 'is-active': mobileNav }">
           <a class="nav-item is-active" href="#">Home</a>
           <a class="nav-item" href="#services">Services</a>
           <a class="nav-item" href="#about">About</a>
@@ -28,7 +28,7 @@
   </div>
 </section>
 <section class="hero is-bold is-medium" id="services">
-  <div class="hero-head">
+  <div class="hero-head is-hidden-mobile">
     <header class="nav">
       <div class="container">
         <div class="nav-left">
@@ -123,7 +123,7 @@
   </div>
 </section>
 <section class="hero is-primary is-bold is-medium" id="about">
-  <div class="hero-head">
+  <div class="hero-head is-hidden-mobile">
     <header class="nav">
       <div class="container">
         <div class="nav-left">
@@ -172,7 +172,7 @@
 </section>
 
 <section class="hero is-bold is-medium" id="contact">
-  <div class="hero-head">
+  <div class="hero-head is-hidden-mobile">
     <header class="nav">
       <div class="container">
         <div class="nav-left">
