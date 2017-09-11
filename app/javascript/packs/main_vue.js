@@ -11,6 +11,7 @@ import VueResource from 'vue-resource'
 import VeeValidate from 'vee-validate'
 
 import ContactForm from './home/contact-form.vue'
+import InvoicePay from './invoices/invoice-pay.vue'
 
 Vue.use(VueResource)
 Vue.use(TurbolinksAdapter)
@@ -35,7 +36,8 @@ document.addEventListener('turbolinks:load', () => {
         console.log('main vue created')
       },
       components: {
-          'contact-form' : ContactForm
+          'contact-form' : ContactForm,
+          'invoice-pay' :InvoicePay
       }
   })
 })

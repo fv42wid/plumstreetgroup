@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/home', to: 'pages#home'
 
   resources :messages, only: [:create]
+  resources :invoices, only: [:show, :create]
 
   root 'pages#home'
 end
