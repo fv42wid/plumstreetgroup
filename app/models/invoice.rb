@@ -1,6 +1,8 @@
 class Invoice < ApplicationRecord
   before_create :create_password
 
+  belongs_to :customer
+
   private
 
     def create_password
