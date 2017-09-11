@@ -2,6 +2,7 @@ class Invoice < ApplicationRecord
   before_create :create_password
 
   belongs_to :customer
+  has_many :charges
 
   private
 
