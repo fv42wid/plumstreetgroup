@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="sendPayment" id="payment-form">
+    <form @submit.prevent="sendCard" id="payment-form">
         <label>Card</label>
         <div id="card-element">
 
@@ -24,11 +24,25 @@
             }
         },
         methods: {
-            sendPayment() {
+            sendCard() {
                 this.stripe.createToken(this.card).then(result => {
                     console.log(result)
+                    if(result.error) {
+                        console.log('errors')
+                    } else {
+                        this.sendPayment(result.token)
+                    }
                     }
                 )
+            },
+            sendPayment(token) {
+                this.$http.post('/invoices', {
+                    invoice: { token: token }
+                }).then(response => {
+                    console.log(response)
+                }, response => {
+                    console.log(response)
+                })
             }
         },
         created() {
