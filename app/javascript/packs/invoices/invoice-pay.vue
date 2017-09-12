@@ -1,18 +1,15 @@
 <template>
     <form @click.prevent="sendCard" id="payment-form">
-        <div class="form-row">
+        <div class="group">
             <label for="card-element">
-                Credit or debit card
+                <span>Card</span>
+                <div id="card-element" class="field"></div>
             </label>
-            <div id="card-element">
-                <!-- a Stripe Element will be inserted here. -->
-            </div>
-
-            <!-- Used to display Element errors -->
-            <div id="card-errors" role="alert"></div>
         </div>
-
-        <button>Submit Payment</button>
+        <button type="submit">Pay $25</button>
+        <div class="outcome">
+            <div class="error" role="alert"></div>
+        </div>
     </form>
 </template>
 
@@ -37,8 +34,8 @@
 
                         '::placeholder': {
                             color: '#CFD7E0',
-                        }
-                    }
+                        },
+                    },
                 }
             }
         },
