@@ -12,6 +12,9 @@
     export default {
         data() {
             return {
+                invoice: {
+                    id: this.invoiceinput
+                },
                 stripe: Stripe('pk_test_iIiXWlThSgBTPJnqxpl7WH9g'),
                 elements: null,
                 card: null,
@@ -23,6 +26,7 @@
                 }
             }
         },
+        props: ['invoiceinput'],
         methods: {
             sendCard() {
                 this.stripe.createToken(this.card).then(result => {
@@ -37,7 +41,8 @@
             },
             sendPayment(token) {
                 this.$http.post('/invoices', {
-                    invoice: { token: token }
+                    invoice: { token: token },
+                    invoice_id: this.invoice.id
                 }).then(response => {
                     console.log(response)
                 }, response => {

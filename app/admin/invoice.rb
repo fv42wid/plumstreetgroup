@@ -11,6 +11,6 @@ ActiveAdmin.register Invoice do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :customer_name, :customer_email, :amount, :note
+  permit_params :customer_id, :amount, :note
 
 end
