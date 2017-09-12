@@ -8,5 +8,34 @@
   </div>
 </nav>
 <div class="container">
-  <invoice-pay :invoiceinput="<%= @invoice.id %>"></invoice-pay>
+  <div class="columns">
+    <div class="column is-3"></div>
+    <div class="column is-6">
+      <div class="tile notification">
+        <div class="column is-12 has-text-centered">
+          <h2 class="title has-text-dark">Invoice #<%= @invoice.id %></h2>
+          <p class="sub-title has-text-dark margin-bottom-10"><%= @invoice.customer.email %></p>
+          <h5 class="sub-title"><%= @invoice.note %></h5>
+          <h5 class="sub-title has-text-dark">$<%= @invoice.amount / 100 %></h5>
+          <invoice-pay></invoice-pay>
+          <!--<form @click.prevent="doNothing" id="payment-form">
+              <div class="form-row">
+                <label for="card-element">
+                  Credit or debit card
+                </label>
+                <div id="card-element">
+                  <!-- a Stripe Element will be inserted here. -->
+                </div>
+
+                <!-- Used to display Element errors
+                <div id="card-errors" role="alert"></div>
+              </div>
+
+              <button>Submit Payment</button>
+          </form>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

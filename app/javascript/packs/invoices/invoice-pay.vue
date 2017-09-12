@@ -1,10 +1,18 @@
 <template>
-    <form @submit.prevent="sendCard" id="payment-form">
-        <label>Card</label>
-        <div id="card-element">
+    <form @click.prevent="sendCard" id="payment-form">
+        <div class="form-row">
+            <label for="card-element">
+                Credit or debit card
+            </label>
+            <div id="card-element">
+                <!-- a Stripe Element will be inserted here. -->
+            </div>
 
+            <!-- Used to display Element errors -->
+            <div id="card-errors" role="alert"></div>
         </div>
-        <button type="submit">Pay</button>
+
+        <button>Submit Payment</button>
     </form>
 </template>
 
@@ -20,8 +28,16 @@
                 card: null,
                 style: {
                     base: {
-                        fontSize: '16px',
-                        lineHeight: '24px'
+                        iconColor: '#666EE8',
+                        color: '#31325F',
+                        lineHeight: '40px',
+                        fontWeight: 300,
+                        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                        fontSize: '15px',
+
+                        '::placeholder': {
+                            color: '#CFD7E0',
+                        }
                     }
                 }
             }
@@ -34,7 +50,7 @@
                     if(result.error) {
                         console.log('errors')
                     } else {
-                        this.sendPayment(result.token)
+                        //this.sendPayment(result.token)
                     }
                     }
                 )
@@ -56,8 +72,32 @@
         },
         mounted() {
             this.elements = this.stripe.elements()
-            this.card = this.elements.create('card')
+            this.card = this.elements.create('card', {style: this.style})
             this.card.mount('#card-element')
         }
     }
 </script>
+
+<style scoped>
+    body {
+        background: #E6EBF1;
+    }
+
+    form {
+        width: 480px;
+    }
+
+    .InputElement {
+        background: transparent;
+        font-weight: 300;
+        border: 0;
+        color: #31325F;
+        outline: none;
+        padding-right: 10px;
+        padding-left: 10px;
+        cursor: text;
+        width: 70%;
+        height: 40px;
+        float: right;
+    }
+</style>
