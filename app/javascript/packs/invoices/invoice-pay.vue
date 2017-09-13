@@ -23,6 +23,7 @@
                 stripe: Stripe('pk_test_iIiXWlThSgBTPJnqxpl7WH9g'),
                 elements: null,
                 card: null,
+                errorElement: null,
                 style: {
                     base: {
                         iconColor: '#666EE8',
@@ -61,16 +62,31 @@
                 }, response => {
                     console.log(response)
                 })
+            },
+            onCardChange(e) {
+                console.log(e)
+                this.errorElement.classList.remove('visible')
+                if(e.error) {
+                    this.errorElement.textContent = e.error.message
+                    this.errorElement.classList.add('visible')
+                }
             }
+        },
+        watch: {
+            /*card: function() {
+                console.log(this.card)
+            }*/
         },
         created() {
 
             console.log('invoice pay created')
         },
         mounted() {
+            this.errorElement = document.querySelector('.error')
             this.elements = this.stripe.elements()
             this.card = this.elements.create('card', {style: this.style})
             this.card.mount('#card-element')
+            this.card.addEventListener('change', this.onCardChange)
         }
     }
 </script>
