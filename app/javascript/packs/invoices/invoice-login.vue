@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="notification is-danger" v-for="(error, index) in loginErrors" :key="index">
+            <button class="delete" @click="dismissError(index)"></button>
+            {{ error }}
+        </div>
         <form @submit.prevent="checkPassword">
             <div class="field">
                 <label class="label">
@@ -32,17 +36,28 @@
             return {
                 userPassword: '',
                 invoicePassword: this.invoiceinput.password,
-                loading: false
+                loading: false,
+                loginErrors: []
             }
         },
         props: ['invoiceinput'],
         methods: {
             checkPassword() {
+                this.loading = true
                 if(this.userPassword == this.invoicePassword) {
+                    //transition
                     console.log('passwords match')
+                    this.loading = false
+                    this.$emit('changeState', 'invoice-pay')
                 } else {
+                    //push to errors
                     console.log('passwords do not match')
+                    this.loginErrors.push('Password is not correct.')
+                    this.loading = false
                 }
+            },
+            dismissError(index) {
+                this.loginErrors.splice(index, 1)
             }
         },
         created() {
