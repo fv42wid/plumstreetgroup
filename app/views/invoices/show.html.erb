@@ -14,10 +14,10 @@
       <div class="tile notification">
         <div class="column is-12 has-text-centered">
           <h2 class="title has-text-dark">Invoice #<%= @invoice.id %></h2>
-          <p class="sub-title has-text-dark margin-bottom-10"><%= @invoice.customer.email %></p>
+          <!--<p class="sub-title has-text-dark margin-bottom-10"><%= @invoice.customer.email %></p>
           <h5 class="sub-title"><%= @invoice.note %></h5>
-          <h5 class="sub-title has-text-dark margin-bottom-10">$<%= @invoice.amount / 100 %></h5>
-          <invoice-pay></invoice-pay>
+          <h5 class="sub-title has-text-dark margin-bottom-10">$<%= @invoice.amount / 100 %></h5>-->
+          <invoice-show :invoiceinput="<%= @invoice.to_json %>"></invoice-show>
           <!--<form @click.prevent="doNothing" id="payment-form">
               <div class="form-row">
                 <label for="card-element">
