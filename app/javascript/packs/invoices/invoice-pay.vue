@@ -6,7 +6,7 @@
                 <div id="card-element" class="field"></div>
             </label>
         </div>
-        <button type="submit">Pay $25</button>
+        <button type="submit">Pay With Stripe</button>
         <div class="outcome">
             <div class="error" role="alert"></div>
         </div>
@@ -90,27 +90,3 @@
         }
     }
 </script>
-
-<style scoped>
-    body {
-        background: #E6EBF1;
-    }
-
-    form {
-        width: 480px;
-    }
-
-    .InputElement {
-        background: transparent;
-        font-weight: 300;
-        border: 0;
-        color: #31325F;
-        outline: none;
-        padding-right: 10px;
-        padding-left: 10px;
-        cursor: text;
-        width: 70%;
-        height: 40px;
-        float: right;
-    }
-</style>
