@@ -1,5 +1,8 @@
 <template>
-    <invoice-login :passwordinput="invoice.password"></invoice-login>
+    <transition name="slide-fade" mode="out-in">
+        <component :is="view" :invoiceinput="invoice"></component>
+    </transition>
+    <!--<invoice-login :passwordinput="invoice.password"></invoice-login>-->
     <!--<invoice-pay :invoiceinput="invoice"></invoice-pay>-->
 </template>
 
@@ -11,6 +14,7 @@
 
         data() {
             return {
+                view: 'invoice-login',
                 invoice: this.invoiceinput
             }
         },

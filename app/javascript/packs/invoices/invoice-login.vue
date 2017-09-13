@@ -31,13 +31,18 @@
         data() {
             return {
                 userPassword: '',
+                invoicePassword: this.invoiceinput.password,
                 loading: false
             }
         },
-        props: ['passwordinput'],
+        props: ['invoiceinput'],
         methods: {
             checkPassword() {
-
+                if(this.userPassword == this.invoicePassword) {
+                    console.log('passwords match')
+                } else {
+                    console.log('passwords do not match')
+                }
             }
         },
         created() {
