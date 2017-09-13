@@ -17,9 +17,7 @@
     export default {
         data() {
             return {
-                invoice: {
-                    id: this.invoiceinput
-                },
+                invoice: this.invoiceinput,
                 stripe: Stripe('pk_test_iIiXWlThSgBTPJnqxpl7WH9g'),
                 elements: null,
                 card: null,
@@ -80,6 +78,10 @@
         created() {
 
             console.log('invoice pay created')
+            console.log(this.invoice.paid)
+            if(this.invoice.paid) {
+                this.$emit('changeState', 'invoice-confirmation')
+            }
         },
         mounted() {
             this.errorElement = document.querySelector('.error')
@@ -87,6 +89,7 @@
             this.card = this.elements.create('card', {style: this.style})
             this.card.mount('#card-element')
             this.card.addEventListener('change', this.onCardChange)
+
         }
     }
 </script>

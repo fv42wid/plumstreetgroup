@@ -9,6 +9,7 @@
 <script>
     import InvoiceLogin from './invoice-login.vue'
     import InvoicePay from './invoice-pay.vue'
+    import InvoiceConfirmation from './invoice-confirmation.vue'
 
     export default {
 
@@ -29,7 +30,8 @@
         },
         components: {
             'invoice-login' : InvoiceLogin,
-            'invoice-pay' : InvoicePay
+            'invoice-pay' : InvoicePay,
+            'invoice-confirmation' : InvoiceConfirmation
         }
     }
 </script>
