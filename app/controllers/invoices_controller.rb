@@ -35,6 +35,7 @@ class InvoicesController < ApplicationController
     @charge = @invoice.charges.new(customer_id: @customer.id, amount: @invoice.amount, stripe_charge_id: charge.id)
     @charge.save
     @invoice.update_attributes(paid: true, charge_id: @charge.id)
+    render json: {charge: @charge}
 
   rescue Stripe::CardError => e
     render json: {errors: e.message}

@@ -17,7 +17,8 @@
             return {
                 view: 'invoice-login',
                 invoice: this.invoiceinput,
-                customer: this.customerinput
+                customer: this.customerinput,
+                charge: null
             }
         },
         props: ['invoiceinput', 'customerinput'],

@@ -24,6 +24,7 @@
             return {
                 invoice: this.invoiceinput,
                 customer: this.customerinput,
+                charge: null,
                 stripe: Stripe('pk_test_iIiXWlThSgBTPJnqxpl7WH9g'),
                 elements: null,
                 card: null,
@@ -63,6 +64,7 @@
                     invoice_id: this.invoice.id
                 }).then(response => {
                     console.log(response)
+                    this.$emit('changeState', 'invoice-confirmation')
                 }, response => {
                     console.log(response)
                 })
