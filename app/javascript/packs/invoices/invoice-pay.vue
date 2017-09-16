@@ -1,16 +1,21 @@
 <template>
-    <form @click.prevent="sendCard" id="payment-form">
-        <div class="group">
-            <label for="card-element">
-                <span>Card</span>
-                <div id="card-element" class="field"></div>
-            </label>
-        </div>
-        <button type="submit">Pay With Stripe</button>
-        <div class="outcome">
-            <div class="error" role="alert"></div>
-        </div>
-    </form>
+    <div>
+        <p class="sub-title has-text-dark margin-bottom-10">{{ customer.email }}</p>
+        <h5 class="sub-title">{{ invoice.note }}</h5>
+        <h5 class="sub-title has-text-dark margin-bottom-10">${{ invoice.amount / 100 }}</h5>
+        <form @click.prevent="sendCard" id="payment-form">
+            <div class="group">
+                <label for="card-element">
+                    <span>Card</span>
+                    <div id="card-element" class="field"></div>
+                </label>
+            </div>
+            <button type="submit">Pay With Stripe</button>
+            <div class="outcome">
+                <div class="error" role="alert"></div>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -18,6 +23,7 @@
         data() {
             return {
                 invoice: this.invoiceinput,
+                customer: this.customerinput,
                 stripe: Stripe('pk_test_iIiXWlThSgBTPJnqxpl7WH9g'),
                 elements: null,
                 card: null,
@@ -38,7 +44,7 @@
                 }
             }
         },
-        props: ['invoiceinput'],
+        props: ['invoiceinput', 'customerinput'],
         methods: {
             sendCard() {
                 this.stripe.createToken(this.card).then(result => {
@@ -46,7 +52,7 @@
                     if(result.error) {
                         console.log('errors')
                     } else {
-                        //this.sendPayment(result.token)
+                        this.sendPayment(result.token)
                     }
                     }
                 )

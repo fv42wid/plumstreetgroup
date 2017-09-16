@@ -1,6 +1,6 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <component :is="view" :invoiceinput="invoice" @changeState="updateComponent"></component>
+        <component :is="view" :invoiceinput="invoice" :customerinput="customer" @changeState="updateComponent"></component>
     </transition>
     <!--<invoice-login :passwordinput="invoice.password"></invoice-login>-->
     <!--<invoice-pay :invoiceinput="invoice"></invoice-pay>-->
@@ -16,10 +16,11 @@
         data() {
             return {
                 view: 'invoice-login',
-                invoice: this.invoiceinput
+                invoice: this.invoiceinput,
+                customer: this.customerinput
             }
         },
-        props: ['invoiceinput'],
+        props: ['invoiceinput', 'customerinput'],
         methods: {
             updateComponent(newComponent) {
                 this.view = newComponent
