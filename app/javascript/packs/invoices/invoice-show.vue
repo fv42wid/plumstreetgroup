@@ -1,6 +1,10 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <component :is="view" :invoiceinput="invoice" :customerinput="customer" @changeState="updateComponent"></component>
+        <component :is="view" :invoiceinput="invoice"
+                   :customerinput="customer"
+                   :chargeinput="charge"
+                   @changeState="updateComponent"
+                   @setCharge="setCharge"></component>
     </transition>
     <!--<invoice-login :passwordinput="invoice.password"></invoice-login>-->
     <!--<invoice-pay :invoiceinput="invoice"></invoice-pay>-->
@@ -25,6 +29,9 @@
         methods: {
             updateComponent(newComponent) {
                 this.view = newComponent
+            },
+            setCharge(chargeID) {
+                this.charge = chargeID
             }
         },
         created() {

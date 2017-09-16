@@ -65,6 +65,7 @@
                 }).then(response => {
                     console.log(response)
                     this.$emit('changeState', 'invoice-confirmation')
+                    this.$emit('setCharge', JSON.parse(response.bodyText).charge.stripe_charge_id)
                 }, response => {
                     console.log(response)
                 })

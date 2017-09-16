@@ -1,6 +1,6 @@
 <template>
     <div class="notification is-success">
-        Your payment has been processed!  Your Stripe charge ID is {{ charge.stripe_charge_id }}.  A receipt will be emailed to you.
+        Your payment has been processed!  Your Stripe charge ID is {{ chargeid }}.  A receipt will be emailed to you.
         Thank you for your business!
     </div>
 </template>
@@ -10,10 +10,10 @@
         data() {
             return {
                 invoice: this.invoiceinput,
-                charge: null
+                chargeid: this.chargeinput
             }
         },
-        props: ['invoiceinput'],
+        props: ['invoiceinput', 'chargeinput'],
         created() {
             console.log('invoice confirmation created')
             this.$http.get('/charges/' + this.invoice.charge_id, {}).then(
