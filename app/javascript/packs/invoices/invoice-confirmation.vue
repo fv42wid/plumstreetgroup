@@ -16,13 +16,13 @@
         props: ['invoiceinput', 'chargeinput'],
         created() {
             console.log('invoice confirmation created')
-            this.$http.get('/charges/' + this.invoice.charge_id, {}).then(
+            /*this.$http.get('/charges/' + this.invoice.charge_id, {}).then(
                 response => {
                     console.log(response)
                     this.charge = JSON.parse(response.bodyText).charge
                 }, response => {
                     console.log(response)
-                })
+                })*/
         }
     }
 </script>

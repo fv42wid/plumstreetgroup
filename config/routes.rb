@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
   resources :invoices, only: [:show, :create]
-  resources :charges, only: [:show]
 
   root 'pages#home'
 end
