@@ -25,7 +25,7 @@
                 invoice: this.invoiceinput,
                 customer: this.customerinput,
                 charge: null,
-                stripe: Stripe('pk_test_iIiXWlThSgBTPJnqxpl7WH9g'),
+                stripe: Stripe(document.querySelector("meta[name='stripe-public-key']").content),
                 elements: null,
                 card: null,
                 errorElement: null,
