@@ -4,6 +4,6 @@ class ContactEmailJob < ApplicationJob
   def perform(message_id)
     # Do something later
     message = Message.find(message_id)
-    MessageMailer.new_message(message).deliver_later
+    MessageMailer.new_message(message).deliver_now
   end
 end
