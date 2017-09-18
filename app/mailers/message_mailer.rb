@@ -7,7 +7,7 @@ class MessageMailer < ApplicationMailer
   #
   def new_message(message)
     @message = message
-    mail to: 'frank@plumstreetgroup.com; fv42wid@yahoo.com', subject: 'New Message from plumstreetgroup.com'
+    mail to: 'frank@plumstreetgroup.com', subject: 'New Message from plumstreetgroup.com'
 
   end
 end
