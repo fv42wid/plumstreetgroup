@@ -15,7 +15,7 @@
         },
         props: ['invoiceinput', 'chargeinput'],
         created() {
-            console.log('invoice confirmation created')
+            //console.log('invoice confirmation created')
             /*this.$http.get('/charges/' + this.invoice.charge_id, {}).then(
                 response => {
                     console.log(response)

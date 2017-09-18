@@ -46,12 +46,12 @@
                 this.loading = true
                 if(this.userPassword == this.invoicePassword) {
                     //transition
-                    console.log('passwords match')
+                    //console.log('passwords match')
                     this.loading = false
                     this.$emit('changeState', 'invoice-pay')
                 } else {
                     //push to errors
-                    console.log('passwords do not match')
+                    //console.log('passwords do not match')
                     this.loginErrors.push('Password is not correct.')
                     this.loading = false
                 }
@@ -61,7 +61,7 @@
             }
         },
         created() {
-            console.log('invoice login created')
+            //console.log('invoice login created')
         }
     }
 </script>

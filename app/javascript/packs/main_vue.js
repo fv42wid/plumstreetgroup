@@ -34,7 +34,7 @@ document.addEventListener('turbolinks:load', () => {
           }
       },
       created: function() {
-        console.log('main vue created')
+        //console.log('main vue created')
       },
       components: {
           'contact-form' : ContactForm,

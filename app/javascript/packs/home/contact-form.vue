@@ -88,7 +88,7 @@
                     message: this.message
                 }).then(response => {
                     this.loading = false
-                    console.log(response)
+                    //console.log(response)
                     this.messageSent = true
                 }, response => {
                     this.loading = false
@@ -98,7 +98,7 @@
             },
             dismissError(index) {
                 this.serverErrors.splice(index, 1)
-                console.log(this.serverErrors)
+                //console.log(this.serverErrors)
             }
         },
         computed: {
@@ -111,7 +111,7 @@
             }
         },
         created() {
-            console.log('contact-form created')
+            //console.log('contact-form created')
         }
     }
 </script>

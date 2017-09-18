@@ -35,7 +35,7 @@
             }
         },
         created() {
-            console.log('invoice show created')
+            //console.log('invoice show created')
         },
         components: {
             'invoice-login' : InvoiceLogin,

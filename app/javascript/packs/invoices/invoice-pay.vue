@@ -49,9 +49,9 @@
         methods: {
             sendCard() {
                 this.stripe.createToken(this.card).then(result => {
-                    console.log(result)
+                    //console.log(result)
                     if(result.error) {
-                        console.log('errors')
+                        //console.log('errors')
                     } else {
                         this.sendPayment(result.token)
                     }
@@ -63,15 +63,15 @@
                     invoice: { token: token },
                     invoice_id: this.invoice.id
                 }).then(response => {
-                    console.log(response)
+                    //console.log(response)
                     this.$emit('changeState', 'invoice-confirmation')
                     this.$emit('setCharge', JSON.parse(response.bodyText).charge.stripe_charge_id)
                 }, response => {
-                    console.log(response)
+                    //console.log(response)
                 })
             },
             onCardChange(e) {
-                console.log(e)
+                //console.log(e)
                 this.errorElement.classList.remove('visible')
                 if(e.error) {
                     this.errorElement.textContent = e.error.message
@@ -86,8 +86,8 @@
         },
         created() {
 
-            console.log('invoice pay created')
-            console.log(this.invoice.paid)
+            //console.log('invoice pay created')
+            //console.log(this.invoice.paid)
             if(this.invoice.paid) {
                 this.$emit('changeState', 'invoice-confirmation')
             }
