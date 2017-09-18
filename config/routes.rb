@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :invoices, only: [:show, :create]
 
   root 'pages#home'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
